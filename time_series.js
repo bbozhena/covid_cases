@@ -26,14 +26,14 @@ function create_time_series(text) {
     });
     console.log([poland_var, ukraine_var]);
     return [
-        { name: 'Poland', points: poland_ var},
+        { name: 'Poland', points: poland_var},
         { name: 'Ukraine', points: ukraine_var }
 
     ];
 
 }
 function create_chart(series) {
-    JSC.Chart('chartDiv', {
+    JSC.Chart('chart_division', {
         series: series
     });
 }
