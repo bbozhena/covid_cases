@@ -3,14 +3,14 @@
         return response.text();
     })
     .then(function (text) {
-        let series = create_time_series(text);
-        create_chart(series);
+        let series = createTimeSeries(text);
+        createChart(series);
     })
     .catch(function (error) {
         console.log(error);
     });
 
-function create_time_series(text) {
+function createTimeSeries(text) {
     const total_cases_ = 'total_cases';
     let dataAsJson = JSC.csv2Json(text);
     let poland_ = [], ukraine_ = [];
@@ -32,7 +32,7 @@ function create_time_series(text) {
     ];
 
 }
-function create_chart(series) {
+function createChart(series) {
     JSC.Chart('chartDiv', {
         series: series
     });
