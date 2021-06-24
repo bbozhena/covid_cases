@@ -3,36 +3,36 @@
         return response.text();
     })
     .then(function (text) {
-        let series = csvToSeries(text);
-        renderChart(series);
+        let series = create_time_series(text);
+        create_chart(series);
     })
     .catch(function (error) {
         console.log(error);
     });
 
-function csvToSeries(text) {
+function create_time_series(text) {
     const total_cases_ = 'total_cases';
     let dataAsJson = JSC.csv2Json(text);
-    let poland_ = [], ukraine_ = [];
+    let poland_var = [], ukraine_var = [];
     dataAsJson.forEach(function (row) {
         if (row.continent === 'Europe') {
             if (row.location === 'Poland') {
-                poland_.push({ x: row.date, y: row[total_cases_] });
+                poland_var.push({ x: row.date, y: row[total_cases_] });
             }
             else if (row.location === 'Ukraine') {
-                ukraine_.push({ x: row.date, y: row[total_cases_] });
+                ukraine_var.push({ x: row.date, y: row[total_cases_] });
             }
         }
     });
-    console.log([poland_, ukraine_]);
+    console.log([poland_var, ukraine_var]);
     return [
-        { name: 'Poland', points: poland_ },
-        { name: 'Ukraine', points: ukraine_ }
+        { name: 'Poland', points: poland_ var},
+        { name: 'Ukraine', points: ukraine_var }
 
     ];
 
 }
-function renderChart(series) {
+function create_chart(series) {
     JSC.Chart('chartDiv', {
         series: series
     });
