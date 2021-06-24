@@ -33,7 +33,7 @@ function create_time_series(text) {
 
 }
 function create_chart(series) {
-    JSC.Chart('chart_division', {
+    JSC.Chart('chartDiv', {
         series: series
     });
 }
