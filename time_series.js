@@ -13,21 +13,21 @@
 function create_time_series(text) {
     const total_cases_ = 'total_cases';
     let dataAsJson = JSC.csv2Json(text);
-    let poland_var = [], ukraine_var = [];
+    let poland_ = [], ukraine_ = [];
     dataAsJson.forEach(function (row) {
         if (row.continent === 'Europe') {
             if (row.location === 'Poland') {
-                poland_var.push({ x: row.date, y: row[total_cases_] });
+                poland_.push({ x: row.date, y: row[total_cases_] });
             }
             else if (row.location === 'Ukraine') {
-                ukraine_var.push({ x: row.date, y: row[total_cases_] });
+                ukraine_.push({ x: row.date, y: row[total_cases_] });
             }
         }
     });
-    console.log([poland_var, ukraine_var]);
+    console.log([poland_, ukraine_]);
     return [
-        { name: 'Poland', points: poland_var},
-        { name: 'Ukraine', points: ukraine_var }
+        { name: 'Poland', points: poland_},
+        { name: 'Ukraine', points: ukraine_}
 
     ];
 
